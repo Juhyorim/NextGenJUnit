@@ -1,4 +1,3 @@
-import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
@@ -81,12 +80,17 @@ public class RegisterTest {
         Store store = new Store();
         Register register = store.getRegister();
         register.makeNewSale();
+
         ItemID itemID1 = new ItemID(1);
         Money price1 = store.getCatalog().getSpecification(itemID1).getPrice();
         register.enterltem(itemID1, 3);
         ItemID itemID2 = new ItemID(2);
         Money price2 = store.getCatalog().getSpecification(itemID2).getPrice();
         register.enterltem(itemID2, 2);
+        ItemID itemID3 = new ItemID(3);
+        Money price3 = store.getCatalog().getSpecification(itemID3).getPrice();
+        register.enterltem(itemID3, 1);
+
         register.endSale();
         Money cashTendered = new Money(150000);
         register.makePayment(cashTendered);
